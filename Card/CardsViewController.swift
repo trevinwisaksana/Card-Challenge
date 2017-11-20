@@ -34,7 +34,7 @@ final class CardsViewController: UIViewController, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // TODO: Return the number of cards inside the listOfCards array
-        // let numberOfCards = ...
+        let numberOfCards = viewModel.numberOfCards()
         return numberOfCards
     }
     
@@ -42,8 +42,8 @@ final class CardsViewController: UIViewController, UICollectionViewDelegate, UIC
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: indexPath) as! CardCell
         
         // TODO: Access the list of cards in the view model
-        // let cardData = ...
-        // cell.configure(cardData)
+        let cardData = viewModel.accessCardDataAt(indexPath)
+        cell.configure(cardData)
         
         return cell
     }

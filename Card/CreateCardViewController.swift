@@ -40,13 +40,14 @@ final class CreateCardViewController: UIViewController {
         let companyAddress = mainView.companyAddressTextField.text
         let companyWebsite = mainView.companyWebsiteTextField.text
         // TODO: Create the card in the view model
-        // return viewModel.createCard(fullName: fullName, email: email, phoneNumber: phoneNumber, occupation: occupation, companyAddress: companyAddress, companyWebsite: companyWebsite)
+        return viewModel.createCard(name: fullName, email: email, phoneNumber: phoneNumber, occupation: occupation, companyAddress: companyAddress, companyWebsite: companyWebsite)
     }
     
     private func addCard() {
         let cardsVC = presentingViewController as? CardsViewController
         guard let card = prepareCard() else { return }
-        // TODO: Add the card to CardsViewModel 
+        // TODO: Add the card to CardsViewModel
+        cardsVC?.viewModel.add(card)
         cardsVC?.cardsCollectionView.reloadData()
         defer {
             dismiss(animated: true, completion: nil)
